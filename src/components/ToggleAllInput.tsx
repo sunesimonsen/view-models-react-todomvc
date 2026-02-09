@@ -1,7 +1,6 @@
-import { memo } from "react";
 import { useTodoMVCModel, useTodos } from "../state/TodoMVCContext";
 
-export const ToggleAllInput = memo(() => {
+export const ToggleAllInput = () => {
   const model = useTodoMVCModel();
   const { allCompleted } = useTodos();
 
@@ -17,4 +16,4 @@ export const ToggleAllInput = memo(() => {
       <label htmlFor="toggle-all">Mark all as complete</label>
     </>
   );
-});
+};

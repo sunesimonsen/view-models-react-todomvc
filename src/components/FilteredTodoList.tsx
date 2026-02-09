@@ -1,8 +1,7 @@
 import { TodoItem } from "./TodoItem";
-import { memo } from "react";
 import { useTodos } from "../state/TodoMVCContext";
 
-export const FilteredTodoList = memo(() => {
+export const FilteredTodoList = () => {
   const { filteredTodos } = useTodos();
 
   return (
@@ -12,4 +11,4 @@ export const FilteredTodoList = memo(() => {
       ))}
     </ul>
   );
-});
+};

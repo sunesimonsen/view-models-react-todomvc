@@ -1,4 +1,4 @@
-import { memo, useMemo } from "react";
+import { useMemo } from "react";
 import type { TodoMVCModel } from "../state/TodoMVCModel";
 import { useTodoMVCModel, useEditing } from "../state/TodoMVCContext";
 
@@ -18,7 +18,7 @@ const createEventHandlers = (model: TodoMVCModel) => ({
   },
 });
 
-export const EditTitleInput = memo(() => {
+export const EditTitleInput = () => {
   const model = useTodoMVCModel();
   const { title } = useEditing();
 
@@ -37,4 +37,4 @@ export const EditTitleInput = memo(() => {
       onKeyDown={onKeydown}
     />
   );
-});
+};

@@ -1,10 +1,9 @@
 import { ToggleAllInput } from "./ToggleAllInput";
 import { FilteredTodoList } from "./FilteredTodoList";
-import { memo } from "react";
 
-export const TodoList = memo(() => (
+export const TodoList = () => (
   <section className="main">
     <ToggleAllInput />
     <FilteredTodoList />
   </section>
-));
+);

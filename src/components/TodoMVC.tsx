@@ -1,4 +1,4 @@
-import { memo, useEffect } from "react";
+import { useEffect } from "react";
 import { Header } from "./Header";
 import { TodoList } from "./TodoList";
 import { Footer } from "./Footer";
@@ -16,7 +16,7 @@ const routeToFilter = (route: string): FilterType => {
   }
 };
 
-export const TodoMVC = memo(() => {
+export const TodoMVC = () => {
   const route = useRouteName();
   const model = useTodoMVCModel();
   const { todos } = useTodos();
@@ -46,4 +46,4 @@ export const TodoMVC = memo(() => {
       </footer>
     </>
   );
-});
+};

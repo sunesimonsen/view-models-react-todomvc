@@ -1,5 +1,5 @@
 import { useModelState } from "@view-models/react";
-import { memo, useMemo } from "react";
+import { useMemo } from "react";
 import type { TodoMVCModel } from "../state/TodoMVCModel";
 import { useTodoMVCModel } from "../state/TodoMVCContext";
 
@@ -14,7 +14,7 @@ const createEventHandlers = (model: TodoMVCModel) => ({
   },
 });
 
-export const NewTodoInput = memo(() => {
+export const NewTodoInput = () => {
   const model = useTodoMVCModel();
   const { title } = useModelState(model.creation);
 
@@ -33,4 +33,4 @@ export const NewTodoInput = memo(() => {
       autoFocus
     />
   );
-});
+};
