@@ -1,9 +1,8 @@
 import { useEffect, useRef } from "react";
 import type { Todo } from "../types/Todo";
-import { useModelState } from "@view-models/react";
 import { EditTitleInput } from "./EditTitleInput";
 import classes from "obj-str";
-import { useTodoMVCModel } from "../state/TodoMVCContext";
+import { useTodoMVCModel, useEditing } from "../state/TodoMVCContext";
 
 interface TodoItemProps {
   todo: Todo;
@@ -12,7 +11,7 @@ interface TodoItemProps {
 export const TodoItem = ({ todo }: TodoItemProps) => {
   const model = useTodoMVCModel();
   const editInputRef = useRef<HTMLInputElement>(null);
-  const { editingId } = useModelState(model.editing);
+  const { editingId } = useEditing();
 
   const isEditing = todo.id === editingId;
 

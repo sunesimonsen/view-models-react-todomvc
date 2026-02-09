@@ -4,8 +4,7 @@ import { TodoList } from "./TodoList";
 import { Footer } from "./Footer";
 import { useRouteName } from "@nano-router/react";
 import { FilterType } from "../types/Todo";
-import { useModelState } from "@view-models/react";
-import { useTodoMVCModel } from "../state/TodoMVCContext";
+import { useTodoMVCModel, useTodos } from "../state/TodoMVCContext";
 
 const routeToFilter = (route: string): FilterType => {
   switch (route) {
@@ -20,7 +19,7 @@ const routeToFilter = (route: string): FilterType => {
 export const TodoMVC = memo(() => {
   const route = useRouteName();
   const model = useTodoMVCModel();
-  const { todos } = useModelState(model);
+  const { todos } = useTodos();
 
   useEffect(() => {
     model.setFilter(routeToFilter(route));

@@ -1,10 +1,9 @@
 import { memo } from "react";
-import { useModelState } from "@view-models/react";
-import { useTodoMVCModel } from "../state/TodoMVCContext";
+import { useTodoMVCModel, useTodos } from "../state/TodoMVCContext";
 
 export const ToggleAllInput = memo(() => {
   const model = useTodoMVCModel();
-  const { allCompleted } = useModelState(model);
+  const { allCompleted } = useTodos();
 
   return (
     <>
