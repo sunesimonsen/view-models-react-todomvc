@@ -5,7 +5,7 @@ import { Footer } from "./Footer";
 import { useRouteName } from "@nano-router/react";
 import { FilterType } from "../types/Todo";
 import { useModelState } from "@view-models/react";
-import { TodoMVCModelProps } from "../types/TodoMVCModelProps";
+import { useTodoMVCModel } from "../state/TodoMVCContext";
 
 const routeToFilter = (route: string): FilterType => {
   switch (route) {
@@ -17,21 +17,23 @@ const routeToFilter = (route: string): FilterType => {
   }
 };
 
-export const TodoMVC = memo(({ model }: TodoMVCModelProps) => {
+export const TodoMVC = memo(() => {
   const route = useRouteName();
+  const model = useTodoMVCModel();
   const { todos } = useModelState(model);
 
   useEffect(() => {
     model.setFilter(routeToFilter(route));
-  }, [route]);
+    model.loadTodos();
+  }, [route, model]);
 
   return (
     <>
       <section className="todoapp" id="root">
         <div className="todoapp">
-          <Header model={model} />
-          {todos && <TodoList model={model} />}
-          {todos && <Footer model={model} />}
+          <Header />
+          {todos && <TodoList />}
+          {todos && <Footer />}
         </div>
       </section>
       <footer className="info">

@@ -5,6 +5,7 @@ import { TodoMVCModel } from "../state/TodoMVCModel";
 import { Storage } from "../utils/Storage";
 import { Todo } from "../types/Todo";
 import { routes } from "../components/routes";
+import { TodoMVCContext } from "../state/TodoMVCContext";
 
 class MemoryStorage implements Storage {
   todos: ReadonlyArray<Todo> = [];
@@ -24,15 +25,26 @@ class MemoryStorage implements Storage {
 
 export const createModel = (todos: Todo[] = []) => {
   const storage = new MemoryStorage(todos);
-  return new TodoMVCModel(storage);
+  const model = new TodoMVCModel(storage);
+  model.loadTodos();
+  return model;
 };
 
-export const renderWithRouter = (ui: React.ReactElement) => {
+interface RenderOptions {
+  model: TodoMVCModel;
+}
+
+export const renderWithRouter = (
+  ui: React.ReactElement,
+  { model }: RenderOptions,
+) => {
   const history = createMemoryHistory({});
 
   return render(
-    <Router history={history} routes={routes}>
-      {ui}
-    </Router>,
+    <TodoMVCContext.Provider value={model}>
+      <Router history={history} routes={routes}>
+        {ui}
+      </Router>
+    </TodoMVCContext.Provider>,
   );
 };

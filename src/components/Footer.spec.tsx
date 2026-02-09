@@ -14,7 +14,7 @@ describe("Footer", () => {
     ];
     const model = createModel(todos);
 
-    renderWithRouter(<Footer model={model} />);
+    renderWithRouter(<Footer />, { model });
 
     expect(screen.getByText("2")).toBeInTheDocument();
     expect(screen.getByText(/items left/)).toBeInTheDocument();
@@ -24,7 +24,7 @@ describe("Footer", () => {
     const todos: Todo[] = [{ id: "1", title: "Only one", completed: false }];
     const model = createModel(todos);
 
-    renderWithRouter(<Footer model={model} />);
+    renderWithRouter(<Footer />, { model });
 
     expect(screen.getByText(/item left/)).toBeInTheDocument();
     expect(screen.queryByText(/items left/)).not.toBeInTheDocument();
@@ -37,7 +37,7 @@ describe("Footer", () => {
     ];
     const model = createModel(todos);
 
-    renderWithRouter(<Footer model={model} />);
+    renderWithRouter(<Footer />, { model });
 
     await userEvent.click(screen.getByText("Clear completed"));
 
@@ -49,7 +49,7 @@ describe("Footer", () => {
     const todos: Todo[] = [{ id: "1", title: "Active", completed: false }];
     const model = createModel(todos);
 
-    renderWithRouter(<Footer model={model} />);
+    renderWithRouter(<Footer />, { model });
 
     expect(screen.queryByText("Clear completed")).not.toBeInTheDocument();
   });

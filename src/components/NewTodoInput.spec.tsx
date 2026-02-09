@@ -8,7 +8,7 @@ describe("NewTodoInput", () => {
   it("adds todo on Enter key", async () => {
     const model = createModel();
 
-    renderWithRouter(<NewTodoInput model={model} />);
+    renderWithRouter(<NewTodoInput />, { model });
 
     const input = screen.getByPlaceholderText("What needs to be done?");
     await userEvent.type(input, "New todo{Enter}");
@@ -20,7 +20,7 @@ describe("NewTodoInput", () => {
   it("clears input after adding todo", async () => {
     const model = createModel();
 
-    renderWithRouter(<NewTodoInput model={model} />);
+    renderWithRouter(<NewTodoInput />, { model });
 
     const input = screen.getByPlaceholderText("What needs to be done?");
     await userEvent.type(input, "New todo{Enter}");
@@ -31,7 +31,7 @@ describe("NewTodoInput", () => {
   it("does not add empty todos", async () => {
     const model = createModel();
 
-    renderWithRouter(<NewTodoInput model={model} />);
+    renderWithRouter(<NewTodoInput />, { model });
 
     const input = screen.getByPlaceholderText("What needs to be done?");
     await userEvent.type(input, "   {Enter}");

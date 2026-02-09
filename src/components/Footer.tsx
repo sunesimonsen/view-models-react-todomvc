@@ -3,7 +3,7 @@ import type { FilterType } from "../types/Todo";
 import { useLink, useRouteName } from "@nano-router/react";
 import classes from "obj-str";
 import { memo } from "react";
-import { TodoMVCModelProps } from "../types/TodoMVCModelProps";
+import { useTodoMVCModel } from "../state/TodoMVCContext";
 
 interface FilterLinkProps {
   filter: FilterType;
@@ -26,7 +26,8 @@ const pluralize = (count: number, word: string) => {
   return count === 1 ? word : `${word}s`;
 };
 
-export const Footer = memo(({ model }: TodoMVCModelProps) => {
+export const Footer = memo(() => {
+  const model = useTodoMVCModel();
   const { activeCount, completedCount } = useModelState(model);
 
   return (

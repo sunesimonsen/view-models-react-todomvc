@@ -1,16 +1,16 @@
 import { useEffect, useRef } from "react";
 import type { Todo } from "../types/Todo";
-import type { TodoMVCModel } from "../state/TodoMVCModel";
 import { useModelState } from "@view-models/react";
 import { EditTitleInput } from "./EditTitleInput";
 import classes from "obj-str";
+import { useTodoMVCModel } from "../state/TodoMVCContext";
 
 interface TodoItemProps {
   todo: Todo;
-  model: TodoMVCModel;
 }
 
-export const TodoItem = ({ todo, model }: TodoItemProps) => {
+export const TodoItem = ({ todo }: TodoItemProps) => {
+  const model = useTodoMVCModel();
   const editInputRef = useRef<HTMLInputElement>(null);
   const { editingId } = useModelState(model.editing);
 
@@ -39,7 +39,7 @@ export const TodoItem = ({ todo, model }: TodoItemProps) => {
         <label onDoubleClick={handleEdit}>{todo.title}</label>
         <button className="destroy" onClick={() => model.deleteTodo(todo.id)} />
       </div>
-      {isEditing && <EditTitleInput model={model} />}
+      {isEditing && <EditTitleInput />}
     </li>
   );
 };

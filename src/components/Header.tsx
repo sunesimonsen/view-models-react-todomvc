@@ -1,10 +1,9 @@
 import { memo } from "react";
-import { TodoMVCModelProps } from "../types/TodoMVCModelProps";
 import { NewTodoInput } from "./NewTodoInput";
 
-export const Header = memo(({ model }: TodoMVCModelProps) => (
+export const Header = memo(() => (
   <header className="header">
     <h1>todos</h1>
-    <NewTodoInput model={model} />
+    <NewTodoInput />
   </header>
 ));

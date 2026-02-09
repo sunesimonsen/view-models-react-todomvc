@@ -53,12 +53,14 @@ export class TodoMVCModel extends ViewModel<TodoState> {
       completedCount: 0,
     });
 
-    const todos = storage.loadTodos();
-    this.updateTodes(todos);
-
     this.storage = storage;
     this.creation = new TodoCreationModel();
     this.editing = new TodoEditingModel();
+  }
+
+  loadTodos() {
+    const todos = this.storage.loadTodos();
+    this.updateTodes(todos);
   }
 
   commitNewTodo(): void {

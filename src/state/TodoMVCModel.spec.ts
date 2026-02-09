@@ -22,6 +22,7 @@ describe("TodoMVCModel", () => {
   beforeEach(() => {
     storage = new MemoryStorage();
     viewModel = new TodoMVCModel(storage);
+    viewModel.loadTodos();
   });
 
   describe("initialization", () => {
@@ -35,6 +36,7 @@ describe("TodoMVCModel", () => {
       const todos = [{ id: "1", title: "Test todo", completed: false }];
       storage.saveTodos(todos);
       const viewModel = new TodoMVCModel(storage);
+      viewModel.loadTodos();
 
       expect(viewModel.state.todos).toEqual(todos);
     });

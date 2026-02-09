@@ -1,8 +1,9 @@
 import { memo } from "react";
-import { TodoMVCModelProps } from "../types/TodoMVCModelProps";
 import { useModelState } from "@view-models/react";
+import { useTodoMVCModel } from "../state/TodoMVCContext";
 
-export const ToggleAllInput = memo(({ model }: TodoMVCModelProps) => {
+export const ToggleAllInput = memo(() => {
+  const model = useTodoMVCModel();
   const { allCompleted } = useModelState(model);
 
   return (

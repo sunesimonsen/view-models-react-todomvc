@@ -13,7 +13,7 @@ describe("FilteredTodoList", () => {
     const model = createModel(todos);
     model.setFilter("active");
 
-    renderWithRouter(<FilteredTodoList model={model} />);
+    renderWithRouter(<FilteredTodoList />, { model });
 
     expect(screen.getByText("Active todo")).toBeInTheDocument();
     expect(screen.queryByText("Completed todo")).not.toBeInTheDocument();
@@ -27,7 +27,7 @@ describe("FilteredTodoList", () => {
     const model = createModel(todos);
     model.setFilter("completed");
 
-    renderWithRouter(<FilteredTodoList model={model} />);
+    renderWithRouter(<FilteredTodoList />, { model });
 
     expect(screen.queryByText("Active todo")).not.toBeInTheDocument();
     expect(screen.getByText("Completed todo")).toBeInTheDocument();
@@ -41,7 +41,7 @@ describe("FilteredTodoList", () => {
     const model = createModel(todos);
     model.setFilter("all");
 
-    renderWithRouter(<FilteredTodoList model={model} />);
+    renderWithRouter(<FilteredTodoList />, { model });
 
     expect(screen.getByText("Active todo")).toBeInTheDocument();
     expect(screen.getByText("Completed todo")).toBeInTheDocument();

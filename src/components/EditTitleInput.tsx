@@ -1,7 +1,7 @@
 import { memo, useMemo } from "react";
-import { TodoMVCModel } from "../state/TodoMVCModel";
+import type { TodoMVCModel } from "../state/TodoMVCModel";
 import { useModelState } from "@view-models/react";
-import { TodoMVCModelProps } from "../types/TodoMVCModelProps";
+import { useTodoMVCModel } from "../state/TodoMVCContext";
 
 const createEventHandlers = (model: TodoMVCModel) => ({
   onSubmit: () => {
@@ -19,7 +19,8 @@ const createEventHandlers = (model: TodoMVCModel) => ({
   },
 });
 
-export const EditTitleInput = memo(({ model }: TodoMVCModelProps) => {
+export const EditTitleInput = memo(() => {
+  const model = useTodoMVCModel();
   const { title } = useModelState(model.editing);
 
   const { onSubmit, onKeydown, onInput } = useMemo(

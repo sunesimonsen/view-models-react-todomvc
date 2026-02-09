@@ -10,7 +10,7 @@ describe("TodoItem", () => {
     const todo: Todo = { id: "1", title: "Test todo", completed: false };
     const model = createModel([todo]);
 
-    renderWithRouter(<TodoItem todo={model.state.todos[0]} model={model} />);
+    renderWithRouter(<TodoItem todo={model.state.todos[0]} />, { model });
 
     await userEvent.click(screen.getByRole("checkbox"));
 
@@ -21,7 +21,7 @@ describe("TodoItem", () => {
     const todo: Todo = { id: "1", title: "Test todo", completed: false };
     const model = createModel([todo]);
 
-    renderWithRouter(<TodoItem todo={model.state.todos[0]} model={model} />);
+    renderWithRouter(<TodoItem todo={model.state.todos[0]} />, { model });
 
     await userEvent.click(screen.getByRole("button"));
 
@@ -32,7 +32,7 @@ describe("TodoItem", () => {
     const todo: Todo = { id: "1", title: "Test todo", completed: false };
     const model = createModel([todo]);
 
-    renderWithRouter(<TodoItem todo={model.state.todos[0]} model={model} />);
+    renderWithRouter(<TodoItem todo={model.state.todos[0]} />, { model });
 
     await userEvent.dblClick(screen.getByText("Test todo"));
 
@@ -44,7 +44,7 @@ describe("TodoItem", () => {
     const model = createModel([todo]);
     model.edit(todo);
 
-    renderWithRouter(<TodoItem todo={model.state.todos[0]} model={model} />);
+    renderWithRouter(<TodoItem todo={model.state.todos[0]} />, { model });
 
     const input = screen.getByDisplayValue("Test todo");
     await userEvent.clear(input);
@@ -58,7 +58,7 @@ describe("TodoItem", () => {
     const model = createModel([todo]);
     model.edit(todo);
 
-    renderWithRouter(<TodoItem todo={model.state.todos[0]} model={model} />);
+    renderWithRouter(<TodoItem todo={model.state.todos[0]} />, { model });
 
     const input = screen.getByDisplayValue("Test todo");
     await userEvent.clear(input);
@@ -73,7 +73,7 @@ describe("TodoItem", () => {
     const model = createModel([todo]);
     model.edit(todo);
 
-    renderWithRouter(<TodoItem todo={model.state.todos[0]} model={model} />);
+    renderWithRouter(<TodoItem todo={model.state.todos[0]} />, { model });
 
     const input = screen.getByDisplayValue("Test todo");
     await userEvent.clear(input);

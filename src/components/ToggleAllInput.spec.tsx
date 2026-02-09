@@ -13,7 +13,7 @@ describe("ToggleAllInput", () => {
     ];
     const model = createModel(todos);
 
-    renderWithRouter(<ToggleAllInput model={model} />);
+    renderWithRouter(<ToggleAllInput />, { model });
 
     await userEvent.click(screen.getByLabelText("Mark all as complete"));
 
@@ -27,7 +27,7 @@ describe("ToggleAllInput", () => {
     ];
     const model = createModel(todos);
 
-    renderWithRouter(<ToggleAllInput model={model} />);
+    renderWithRouter(<ToggleAllInput />, { model });
 
     await userEvent.click(screen.getByLabelText("Mark all as complete"));
 
@@ -41,7 +41,7 @@ describe("ToggleAllInput", () => {
     ];
     const model = createModel(todos);
 
-    renderWithRouter(<ToggleAllInput model={model} />);
+    renderWithRouter(<ToggleAllInput />, { model });
 
     expect(screen.getByLabelText("Mark all as complete")).toBeChecked();
   });
